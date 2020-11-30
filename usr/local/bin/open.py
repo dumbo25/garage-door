@@ -42,10 +42,13 @@ SENSOR = 24
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PRESS, GPIO.OUT)
-GPIO.setup(SENSOR, GPIO.IN)
+GPIO.setup(SENSOR, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+# wait for sensor pin to reach steady state before reading
+sleep(1)
 
 open = GPIO.input(SENSOR)
-print ("open = " + str(open))
+# print ("open = " + str(open))
 if open == 1:
     GPIO.output(PRESS, GPIO.LOW)
     sleep(1)
