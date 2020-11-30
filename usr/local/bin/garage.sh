@@ -3,7 +3,7 @@
 # enter a  crontab: */5 * * * * sudo /usr/local/bin/garage.sh
 # If open send an alert and write to syslog
 up=0
-mobile='your-number'
+mobile='your-number@txt.att.net'
 
 sensor=5
 gpio -g mode $sensor down
