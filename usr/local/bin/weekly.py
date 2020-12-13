@@ -5,13 +5,17 @@
 import smtplib
 
 # CHANGE THE ITEMS BELOW - DO NOT PUBLISH
+#
 #  Change the items enclosed by angle brackets and delete the angle barckets
-gmail_password = '<your-throw-away-gmail-account-password>'
-gmail_address = '<your-throw-away-gmail-account>@gmail.com'
+
+gmail_password = '<your-throwaway-gmail password>'
+gmail_address = '<your-throwaway-gmail-account>@gmail.com'
+id = '<your-6-letter-project-id-from-genID.py>' # This is the ID gmail looks for to foward to your smart phone
+
 #
 # CHANGE THE ITEMS ABOVE - DO NOT PUBLISH
 
-subject = "Weekly garage door email"
+subject = id + " Weekly garage door email"
 message = 'Subject: %s' % (subject)
 # 587 uses TLS
 # 465 uses SSL - not supported see edits to /etc/ssmtp/ssmtp.conf
