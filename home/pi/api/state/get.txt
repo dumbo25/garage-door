@@ -1,1 +1,1 @@
-"description" : "close garage door"
+"description" : "garage door state"
