@@ -26,9 +26,14 @@ STATE="your-state"
 CITY="your-city"
 COMPANY="your-lastname"
 UNIT="your-firstname"
-# The Common Name for the CA cannot be the same as the server or client (i.e., CA != FQDN)
+# A server's Fully Qualified Domain Name (FQDN) to which clients connect must match 
+# the its certificate's DNSname attribute. If the FQDN of the certificate does not 
+# match the FQDN of the server, then the client should refuse to connect. 
+#
+# So, FQDN must be $HOSTNAME or $HOSTNAME.local
 FQDN="$HOSTNAME"
-CA="CERTAUTH"
+# The Common Name (aka FQDN) for the CA cannot be the same as the server or client 
+CA="$HOSTNAME-ca"
 EMAIL=""
 PASSWORD="your-password"
 
