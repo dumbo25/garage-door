@@ -165,9 +165,9 @@ sed -i "s/.*demoCA.*/dir = $ESC_CERTSDIR/" $CONFFILE
 # [ req ] no changes
 # [ req_distinguished_name ]
 sed -i "s/countryName.*= AU/countryName = $COUNTRY/" $CONFFILE
-sed -i "s/stateOrProvinceName_default.*= State.*/stateOrProvinceName_default = $STATE/" $CONFFILE
+sed -i "s/stateOrProvinceName_default.*= Some.*/stateOrProvinceName_default = $STATE/" $CONFFILE
 sed -i "s/localityName.*= Locality.*/localityName = $CITY/" $CONFFILE
-sed -i "s/0.organizationName_default.*= Organization.*/0.organizationName_default = $LASTNAME/" $CONFFILE
+sed -i "s/0.organizationName_default.*= Internet.*/0.organizationName_default = $LASTNAME/" $CONFFILE
 sed -i "s/organizationalUnitName.*= Organizational Unit.*/organizationalUnitName = $FIRSTNAME/" $CONFFILE
 sed -i "s/commonName.*= Common Name.*/commonName = $CA/" $CONFFILE
 sed -i "s/emailAddress.*= Email Address.*/emailAddress = $EMAIL/" $CONFFILE
