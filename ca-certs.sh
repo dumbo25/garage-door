@@ -28,6 +28,7 @@ CERTPASSWORD="<your-gmail-password>"
 HOMEDIR="/home/pi"
 CACERTSDIR="$HOMEDIR/ca-certs"
 CERTSDIR="/etc/ssl"
+ESC_CERTSDIR="\/etc\/ssl"
 #
 #   Key and pem paths and files used in openssl.cnf
 #
@@ -159,19 +160,16 @@ touch index.txt
 #
 # from beginning through [ CA_default ] no changes
 # [ CA_default ] take the defaults
-print ("start of sed")
-sed -i "s/.*demoCA.*/dir = $CERTSDIR/" $CONFFILE
+sed -i "s/.*demoCA.*/dir = $ESC_CERTSDIR/" $CONFFILE
 #     x509 extensions are defined in openssl.cnf under the section usr_cert
 # [ req ] no changes
 # [ req_distinguished_name ]
 sed -i "s/countryName.*= AU/countryName = $COUNTRY/" $CONFFILE
 sed -i "s/stateOrProvinceName_default.*= State.*/stateOrProvinceName_default = $STATE/" $CONFFILE
 sed -i "s/localityName.*= Locality.*/localityName = $CITY/" $CONFFILE
-print ("sed here 1")
 sed -i "s/0.organizationName_default.*= Organization.*/0.organizationName_default = $LASTNAME/" $CONFFILE
 sed -i "s/organizationalUnitName.*= Organizational Unit.*/organizationalUnitName = $FIRSTNAME/" $CONFFILE
 sed -i "s/commonName.*= Common Name.*/commonName = $CA/" $CONFFILE
-print ("sed here 2")
 sed -i "s/emailAddress.*= Email Address.*/emailAddress = $EMAIL/" $CONFFILE
 sed -i "s/challengePassword.*= A challenge.*/challengePassword = $CERTPASSWORD/" $CONFFILE
 # [ usr_cert ]
@@ -183,7 +181,6 @@ sed -i "s/basicConstraints=CA:FALSE/basicConstraints=CA:TRUE, pathlen=0/" $CONFF
 sed -i "s/# keyUsage = cRLSign, keyCertSign/keyUsage= critical, cRLSign, digitalSignature, keyCertSign/" $CONFFILE
 # [ crl ext ]
 # [ proxy_cert_ext ]
-print ("end of sed")
 
 
 #   I am unsure how to complete subjectAltName for NAT'd servers with no DNS
