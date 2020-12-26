@@ -39,6 +39,8 @@ CERTPATH="$CERTSDIR/certs/"
 CERTPEM="cacert.pem"
 CERTFILE=$CERTPATH$CERTPEM
 #
+CONFFILE="$CERTSDIR/openssl.cnf"
+#
 #   The Common Name for the CA cannot be the same as the server or client (i.e., CA != FQDN)
 #
 FQDN="$HOSTNAME"
@@ -106,21 +108,24 @@ fi
 #
 echo
 echo "Moving original files to *.backup in case they need to be recovered"
-KEYBACKUP="$KEYFILE.backup"
-if [ ! -f "$KEYBACKUP" ]; then
-    mv $KEYFILE $KEYFILE.backup
-    # /etc/ssl/private/ca-privkey.pem /etc/ssl/private/ca-privkey.pem.backup
+if [ -f $KEYFILE ]; then
+    KEYBACKUP="$KEYFILE.backup"
+    if [ ! -f "$KEYBACKUP" ]; then
+        mv $KEYFILE $KEYFILE.backup
+    fi
 fi
 
-CERTBACKUP="$CERTFILE.backup"
-if [ ! -f "$CERTBACKUP" ]; then
-    mv $CERTFILE $CERTFILE.backup
-    # /etc/ssl/certs/ca-cert.pem /etc/ssl/certs/ca-cert.pem.backup
+if [ -f "$CERTFILE" ]; then
+    CERTBACKUP="$CERTFILE.backup"
+    if [ ! -f "$CERTBACKUP" ]; then
+        mv $CERTFILE $CERTFILE.backup
+    fi
 fi
 
-CONFBACKUP="/etc/ssl/openssl.cnf.backup"
-if [ ! -f "$CONFBACKUP" ]; then
-    mv $CERTSDIR/openssl.cnf $CERTSDIR/openssl.cnf.backup
+f [ -f "$CONFFILE" ]; then
+    CONFBACKUP="$CONFFILE.backup"
+    if [ ! -f "$CONFBACKUP" ]; then
+        mv $CONFFILE $CONFBACKUP        
 fi
 
 
@@ -143,7 +148,7 @@ pwd
 [ -d private ] && echo "    private directory exists" || mkdir private
 sudo chown root:root private
 sudo chmod 700 private
-[ -f index.txt ] && echo "    index.txt exists" || rm index.tct
+[ -f index.txt ] && echo "    index.txt exists" || rm index.txt
 touch index.txt
 [ -f serial ] && echo "    serial exists" || echo 01 > serial
 [ -f crlnumber ] && echo "    crlnumber exists" || echo 01 > crlnumber
