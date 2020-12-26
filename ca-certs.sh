@@ -157,14 +157,6 @@ touch index.txt
 # Edit configuration file
 #   Made backup above
 #
-#   Copy configuration file to ca-certs
-#
-#   Make edits to copy of openssl.cnf
-#
-
-echo
-echo "Copy configuration file and make changes to it"
-cp $CERTSDIR/openssl.cnf .
 
 # from beginning through [ CA_default ] no changes
 # [ CA_default ] take the defaults
@@ -228,10 +220,10 @@ openssl req -config $CERTSDIR/openssl.cnf -new -x509 -days $DAYS -keyform PEM -k
 # *** need to verify CA
 echo
 echo "Verify CA certificate"
-openssl x509 -noout -text -in $CERTSDIR/certs/ca-cert.pem
+openssl x509 -noout -text -in $CERTFILE
 
 echo "Verify CA Key:"
-openssl rsa -in $CERTSDIR/private/cakey.pem -check
+openssl rsa -in $CERTFILE -check
 
 echo
 echo "Exiting Certificate Authority Script"
