@@ -33,11 +33,11 @@ CERTSDIR="/etc/ssl"
 #
 PRIVATEPATH="$CERTSDIR/private/"
 CERTKEY="cakey.pem"
-KEYFILE=$PRIVATEPATH$CERTKEY
+KEYFILE="$PRIVATEPATH$CERTKEY"
 #
 CERTPATH="$CERTSDIR/certs/"
 CERTPEM="cacert.pem"
-CERTFILE=$CERTPATH$CERTPEM
+CERTFILE="$CERTPATH$CERTPEM"
 #
 CONFFILE="$CERTSDIR/openssl.cnf"
 #
@@ -125,7 +125,8 @@ fi
 if [ -f "$CONFFILE" ]; then
     CONFBACKUP="$CONFFILE.backup"
     if [ ! -f "$CONFBACKUP" ]; then
-        mv $CONFFILE $CONFBACKUP        
+        mv $CONFFILE $CONFBACKUP
+    fi
 fi
 
 
