@@ -122,7 +122,7 @@ if [ -f "$CERTFILE" ]; then
     fi
 fi
 
-f [ -f "$CONFFILE" ]; then
+if [ -f "$CONFFILE" ]; then
     CONFBACKUP="$CONFFILE.backup"
     if [ ! -f "$CONFBACKUP" ]; then
         mv $CONFFILE $CONFBACKUP        
