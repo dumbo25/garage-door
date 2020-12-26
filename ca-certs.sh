@@ -108,17 +108,17 @@ fi
 #
 echo
 echo "Moving original files to *.backup in case they need to be recovered"
-if [ -f $KEYFILE ]; then
+if [ -f "$KEYFILE" ]; then
     KEYBACKUP="$KEYFILE.backup"
     if [ ! -f "$KEYBACKUP" ]; then
-        mv $KEYFILE $KEYFILE.backup
+        mv $KEYFILE $KEYBACKUP
     fi
 fi
 
 if [ -f "$CERTFILE" ]; then
     CERTBACKUP="$CERTFILE.backup"
     if [ ! -f "$CERTBACKUP" ]; then
-        mv $CERTFILE $CERTFILE.backup
+        mv $CERTFILE $CERTBACKUP
     fi
 fi
 
