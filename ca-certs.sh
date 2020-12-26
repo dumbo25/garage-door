@@ -26,7 +26,8 @@ CERTPASSWORD="<your-gmail-password>"
 # Directories and paths
 #
 HOMEDIR="/home/pi"
-CERTSDIR="$HOMEDIR/ca-certs"
+CACERTSDIR="$HOMEDIR/ca-certs"
+CERTSDIR="/etc/ssl"
 #
 #   Key and pem paths and files used in openssl.cnf
 #
@@ -107,17 +108,19 @@ echo
 echo "Moving original files to *.backup in case they need to be recovered"
 KEYBACKUP="$KEYFILE.backup"
 if [ ! -f "$KEYBACKUP" ]; then
-    mv /etc/ssl/private/ca-privkey.pem /etc/ssl/private/ca-privkey.pem.backup
+    mv $KEYFILE $KEYFILE.backup
+    # /etc/ssl/private/ca-privkey.pem /etc/ssl/private/ca-privkey.pem.backup
 fi
 
 CERTBACKUP="$CERTFILE.backup"
 if [ ! -f "$CERTBACKUP" ]; then
-    mv /etc/ssl/certs/ca-cert.pem /etc/ssl/certs/ca-cert.pem.backup
+    mv $CERTFILE $CERTFILE.backup
+    # /etc/ssl/certs/ca-cert.pem /etc/ssl/certs/ca-cert.pem.backup
 fi
 
 CONFBACKUP="/etc/ssl/openssl.cnf.backup"
 if [ ! -f "$CONFBACKUP" ]; then
-    mv /etc/ssl/openssl.cnf /etc/ssl/openssl.cnf.backup
+    mv $CERTSDIR/openssl.cnf $CERTSDIR/openssl.cnf.backup
 fi
 
 
@@ -126,12 +129,12 @@ fi
 # Cannot use cd ~/. because when running as sudo it moves to /home/root instead of /home/pi
 #
 echo
-echo "Creating directories and moving into ca-certs"
-cd $HOMEDIR
-echo "    home directory:"
+echo "Creating directories and moving into certs directory"
+cd $CERTDIR
+echo "    certs directory:"
 pwd
 
-[ -d $CERTSDIR ] && echo "    $CERTSDIR directory exists" || mkdir CERTSDIR
+[ -d $CACERTSDIR ] && echo "    $CACERTSDIR directory exists" || mkdir $CACERTSDIR
 cd $CERTSDIR
 pwd
 [ -d certs ] && echo "    certs directory exists" || mkdir certs
@@ -155,9 +158,9 @@ touch index.txt
 
 echo
 echo "Copy configuration file and make changes to it"
-cp /etc/ssl/openssl.cnf .
+cp $CERTSDIR/openssl.cnf .
 
-# from beginning through [ CA_default ] no chnages
+# from beginning through [ CA_default ] no changes
 # [ CA_default ] take the defaults
 sed -i "s/.*demoCA.*/dir = $CERTSDIR/" openssl.cnf
 #     x509 extensions are defined in openssl.cnf under the section usr_cert
@@ -214,11 +217,6 @@ echo
 #     -keyout = CA key
 #     -outform PEM = human readbale form
 #     -out = CA cert
-
-# openssl req –config openssl.cnf –new –x509 –days $DAYS -keyform PEM –keyout cakey.pem -outform PEM –out cacert.pem
-
-# openssl req -config /home/pi/ca-certs/openssl.cnf -new -x509 -days 365 -keyform PEM -keyout cakey.pem -outform PEM -out cacert.pem
-
 openssl req -config $CERTSDIR/openssl.cnf -new -x509 -days $DAYS -keyform PEM -keyout $CERTSDIR/private/cakey.pem -outform PEM -out $CERTSDIR/certs/cacert.pem
 
 # *** need to verify CA
@@ -231,3 +229,4 @@ openssl rsa -in $CERTSDIR/private/cakey.pem -check
 
 echo
 echo "Exiting Certificate Authority Script"
+
