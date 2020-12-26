@@ -157,28 +157,27 @@ touch index.txt
 # Edit configuration file
 #   Made backup above
 #
-
 # from beginning through [ CA_default ] no changes
 # [ CA_default ] take the defaults
-sed -i "s/.*demoCA.*/dir = $CERTSDIR/" openssl.cnf
+sed -i "s/.*demoCA.*/dir = $CERTSDIR/" $CONFFILE
 #     x509 extensions are defined in openssl.cnf under the section usr_cert
 # [ req ] no changes
 # [ req_distinguished_name ]
-sed -i "s/countryName.*= AU/countryName = $COUNTRY/" openssl.cnf
-sed -i "s/stateOrProvinceName.*= State.*/stateOrProvinceName = $STATE/" openssl.cnf
-sed -i "s/localityName.*= Locality.*/localityName = $CITY/" openssl.cnf
-sed -i "s/0.organizationName.*= Organization.*/0.organizationName = $LASTNAME/" openssl.cnf
-sed -i "s/organizationalUnitName.*= Organizational Unit.*/organizationalUnitName = $FIRSTNAME/" openssl.cnf
-sed -i "s/commonName.*= Common Name.*/commonName = $CA/" openssl.cnf
-sed -i "s/emailAddress.*= Email Address.*/emailAddress = $EMAIL/" openssl.cnf
-sed -i "s/challengePassword.*= A challenge.*/challengePassword = $CERTPASSWORD/" openssl.cnf
+sed -i "s/countryName.*= AU/countryName = $COUNTRY/" $CONFFILE
+sed -i "s/stateOrProvinceName.*= State.*/stateOrProvinceName = $STATE/" $CONFFILE
+sed -i "s/localityName.*= Locality.*/localityName = $CITY/" $CONFFILE
+sed -i "s/0.organizationName.*= Organization.*/0.organizationName = $LASTNAME/" $CONFFILE
+sed -i "s/organizationalUnitName.*= Organizational Unit.*/organizationalUnitName = $FIRSTNAME/" $CONFFILE
+sed -i "s/commonName.*= Common Name.*/commonName = $CA/" $CONFFILE
+sed -i "s/emailAddress.*= Email Address.*/emailAddress = $EMAIL/" $CONFFILE
+sed -i "s/challengePassword.*= A challenge.*/challengePassword = $CERTPASSWORD/" $CONFFILE
 # [ usr_cert ]
 #   CA must have CA:TRUE and pathlen=0
 #   A 0 pathlen means the CA can only sign end user certificates and not CAs
-sed -i "s/basicConstraints=CA:FALSE/basicConstraints=CA:TRUE, pathlen=0/" openssl.cnf
+sed -i "s/basicConstraints=CA:FALSE/basicConstraints=CA:TRUE, pathlen=0/" $CONFFILE
 # [ v3_req ] - no changes
 # [ v3_ca ]
-sed -i "s/# keyUsage = cRLSign, keyCertSign/keyUsage= critical, cRLSign, digitalSignature, keyCertSign/" openssl.cnf
+sed -i "s/# keyUsage = cRLSign, keyCertSign/keyUsage= critical, cRLSign, digitalSignature, keyCertSign/" $CONFFILE
 # [ crl ext ]
 # [ proxy_cert_ext ]
 
@@ -215,7 +214,7 @@ echo
 #     -keyout = CA key
 #     -outform PEM = human readbale form
 #     -out = CA cert
-openssl req -config $CERTSDIR/openssl.cnf -new -x509 -days $DAYS -keyform PEM -keyout $CERTSDIR/private/cakey.pem -outform PEM -out $CERTSDIR/certs/cacert.pem
+openssl req -config $CONFFILE -new -x509 -days $DAYS -keyform PEM -keyout $KEYFILE -outform PEM -out $CERTFILE
 
 # *** need to verify CA
 echo
