@@ -223,7 +223,7 @@ echo "Verify CA certificate"
 openssl x509 -noout -text -in $CERTFILE
 
 echo "Verify CA Key:"
-openssl rsa -in $CERTFILE -check
+openssl rsa -in $KEYFILE -check
 
 echo
 echo "Exiting Certificate Authority Script"
