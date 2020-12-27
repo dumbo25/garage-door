@@ -14,7 +14,7 @@ FIRSTNAME="<your-business-unit-or-firstname>"
 EMAIL="<your-throw-away-gmail-account>@gmail.com"
 CERTPASSWORD="<your-throw-away-gmail-password>"
 
-#   Most systems have many certs. So, name your cert appropriately (cert.key is a poor
+#   Most systems have many certs. So, name your cert appropriately (cert is a poor
 #   choice). As an example, my $HOSTNAME for a smart Raspberry Pi garage door opener is
 #   garageopener, and a descriptive name for the cert might be garage-opener.  I chose
 #   to use garage-opener where ♣certname♣ appears below.
