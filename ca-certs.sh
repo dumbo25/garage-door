@@ -32,7 +32,7 @@ CONFFILE="$CERTSDIR/openssl.cnf"
 #   The Common Name for the CA cannot be the same as the server or client (i.e., CA != FQDN)
 #
 FQDN="$HOSTNAME"
-CA="$HOSTNAME-ca"
+CA="cacert"
 #
 #   Most browsers limit certs to 365 days or less
 #
