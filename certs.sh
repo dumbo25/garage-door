@@ -2,14 +2,6 @@
 
 # bash script to create server and client-side certs
 
-# run as:
-#   sudo bash certs.sh
-#
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run with: sudo bash certs.sh"
-    exit 1
-fi
-
 # Global names
 #   Most systems have many certs. So, name your cert appropriately. For example, my ♣hostname♣
 #   for a Raspberry Pi garage door opener is rpigarageopener, and a descriptive name for the
