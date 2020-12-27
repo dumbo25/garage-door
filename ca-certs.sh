@@ -7,21 +7,8 @@
 
 # Global names
 #
-#   **** DO NOT PUBLISH ITEMS BELOW ****
-#
-#   Replace values below in angle brackets with your values
-#
-COUNTRY="<your-2-letter-country-code>"
-STATE="<your-state-or-province>"
-CITY="<your-city>"
-LASTNAME="<your-company-or-lastname>"
-FIRSTNAME="<your-business-unit-or-first-name>"
-EMAIL="<your-throwaway-gmail-account>@gmail.com"
-CERTPASSWORD="<your-gmail-password>"
-#
-#   Replace values above in angle brackets with your values
-#
-#   **** DO NOT PUBLISH ITEMS ABOVE ****
+# defines values for private data that should not be shared
+source private-data.sh
 #
 # Directories and paths
 #
