@@ -13,7 +13,6 @@ source private-data.sh
 # Directories and paths
 #
 HOMEDIR="/home/pi"
-CACERTSDIR="$HOMEDIR/ca-certs"
 CERTSDIR="/etc/ssl"
 ESC_CERTSDIR="\/etc\/ssl"
 #
@@ -54,6 +53,20 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+# must edit private data before runnning the script
+if [[ "$CERTPASSWORD" == *"<"* ]]; then
+    echo
+    echo "Please edit the global names in private-data.sh before running"
+    echo "    Location = $CITY, $STATE, $COUNTRY"
+    echo "    Name = $LASTNAME, $FIRSTNAME"
+    echo "    email = $EMAIL"
+    echo "    cert password = $CERTPASSWORD"
+    echo "    FQDN = $FQDN"
+    echo "    CA = $CA"
+    echo
+    echo " Feilure: Exiting Certificate Authority setup script"
+fi
+
 # The script only needs to be run one time on a server
 #
 # If the ca-cert key and pem files exist then prompt user if they really want
@@ -73,19 +86,6 @@ if [ -f "$CERTFILE" ]; then
     fi
 else
     echo "No CA files found."
-fi
-
-if [ $CERTPASSWORD = "<your-password>" ]; then
-    echo
-    echo "Please edit the global names in this script before running"
-    echo "    Location = $CITY, $STATE, $COUNTRY"
-    echo "    Name = $LASTNAME, $FIRSTNAME"
-    echo "    email = $EMAIL"
-    echo "    cert password = $CERTPASSWORD"
-    echo "    FQDN = $FQDN"
-    echo "    CA = $CA"
-    echo
-    echo " Feilure: Exiting Certificate Authority setup script"
 fi
 
 
@@ -118,9 +118,7 @@ if [ -f "$CONFFILE" ]; then
 fi
 
 
-# Change to home directory and create certs directory
-#
-# Cannot use cd ~/. because when running as sudo it moves to /home/root instead of /home/pi
+# Change to certs directory and create sub directories
 #
 echo
 echo "Creating directories and moving into certs directory"
