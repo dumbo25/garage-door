@@ -113,7 +113,7 @@ fi
 if [ -f "$CONFFILE" ]; then
     CONFBACKUP="$CONFFILE.backup"
     if [ ! -f "$CONFBACKUP" ]; then
-        mv $CONFFILE $CONFBACKUP
+        cp $CONFFILE $CONFBACKUP
     fi
 fi
 
@@ -143,20 +143,22 @@ touch index.txt
 # Edit configuration file
 #   Made backup above
 #
+# need to add _default where it is missing (only state and organization have defaults)
+#
 # from beginning through [ CA_default ] no changes
 # [ CA_default ] take the defaults
 sed -i "s/.*demoCA.*/dir = $ESC_CERTSDIR/" $CONFFILE
 #     x509 extensions are defined in openssl.cnf under the section usr_cert
 # [ req ] no changes
 # [ req_distinguished_name ]
-sed -i "s/countryName.*= AU/countryName = $COUNTRY/" $CONFFILE
+sed -i "s/countryName_default.*= AU.*/countryName_default = $COUNTRY/" $CONFFILE
 sed -i "s/stateOrProvinceName_default.*= Some.*/stateOrProvinceName_default = $STATE/" $CONFFILE
-sed -i "s/localityName.*= Locality.*/localityName = $CITY/" $CONFFILE
+sed -i "/localityName.*= Locality.*/a localityName_default = $CITY" $CONFFILE
 sed -i "s/0.organizationName_default.*= Internet.*/0.organizationName_default = $LASTNAME/" $CONFFILE
-sed -i "s/organizationalUnitName.*= Organizational Unit.*/organizationalUnitName = $FIRSTNAME/" $CONFFILE
-sed -i "s/commonName.*= Common Name.*/commonName = $CA/" $CONFFILE
-sed -i "s/emailAddress.*= Email Address.*/emailAddress = $EMAIL/" $CONFFILE
-sed -i "s/challengePassword.*= A challenge.*/challengePassword = $CERTPASSWORD/" $CONFFILE
+sed -i "/organizationalUnitName.*= Organizational/a organizationalUnitName_default = $FIRSTNAME" $CONFFILE
+sed -i "/commonName.*= Common Name.*/a commonName_default = $CA" $CONFFILE
+sed -i "/emailAddress.*= Email Address.*/a emailAddress_default = $EMAIL" $CONFFILE
+sed -i "/challengePassword.*= A challenge/a challengePassword_default = $CERTPASSWORD" $CONFFILE
 # [ usr_cert ]
 #   CA must have CA:TRUE and pathlen=0
 #   A 0 pathlen means the CA can only sign end user certificates and not CAs
@@ -166,7 +168,6 @@ sed -i "s/basicConstraints=CA:FALSE/basicConstraints=CA:TRUE, pathlen=0/" $CONFF
 sed -i "s/# keyUsage = cRLSign, keyCertSign/keyUsage= critical, cRLSign, digitalSignature, keyCertSign/" $CONFFILE
 # [ crl ext ]
 # [ proxy_cert_ext ]
-
 
 #   I am unsure how to complete subjectAltName for NAT'd servers with no DNS
 #   I'd prefer to use IP addresses
