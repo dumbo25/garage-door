@@ -60,10 +60,6 @@ else
     echo "No CA files found."
 fi
 
-# check if directory exists. If not make it. Move into it
-[ -d $MYCERTSDIR ] && echo "    $MYCERTSDIR directory exists" || mkdir $MYCERTSDIR
-cd $MYCERTSDIR
-
 # outputs:
 #   ca-crt.pem  ca-key.pem
 echo
