@@ -14,11 +14,17 @@ FIRSTNAME="<your-business-unit-or-firstname>"
 EMAIL="<your-throw-away-gmail-account>@gmail.com"
 CERTPASSWORD="<your-throw-away-gmail-password>"
 
-#   Most systems have many certs. So, name your cert appropriately (cert is a poor
-#   choice). As an example, my $HOSTNAME for a smart Raspberry Pi garage door opener is
-#   garageopener, and a descriptive name for the cert might be garage-opener.  I chose
-#   to use garage-opener where ♣certname♣ appears below.
-#
+# The Common Name used for the CA (CAANAME) should not be the same as the one used for server or client certs (DNSNAME)
+# DNSNAME example: my-domain.duckdns.org
+DNSNAME="<your-DNS-name>" 
+CANAME="cacert"
+
+# you can change these to whatever you would like
+MYCERTSDIR="/home/pi/certs"
+CACRT="ca-crt"
+CAKEY="ca-key"
+
+PEMPSWD="<your-pem-pass-phrase"
 CERTNAME="<your-project-name>"
 
 #
