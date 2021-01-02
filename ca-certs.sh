@@ -69,5 +69,14 @@ echo "$ openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE
 openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE -passout 'pass:$PEMPSWD' -subj "/CN=$CANAME/emailAddress=$EMAIL/C=US/ST=$STATE/L=$CITY/O=$LASTNAME/OU=$FIRSTNAME"
 
 echo
+echo "   values that may be needed for other guides"
+echo "     PEM Pass Phrase = $PEMPSWD"
+echo "     Common Name for CA = $CANAME"
+echo
+echo "     Directory for cert files = $MYCERTS"
+echo "       CA Cert File = $CACERTFILE"
+echo "       CA KEY File = $CAKEYFILE"
+
+echo
 echo "SUCCESS: Exiting Certificate Authority Script"
 
