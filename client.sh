@@ -100,6 +100,19 @@ echo "   Allows p12 file to be read and copied to device. This needs to be chang
 chmod +r $CLIENTP12
 cp $CLIENTP12 /home/pi/.
 
+echo
+echo "   Generate pkcs12 file to install on $CLIENT"
+echo
+echo "openssl pkcs12 -export -inkey $CLIENTKEYFILE -in $CLIENTCERTFILE -out $CLIENTPFX"
+openssl pkcs12 -export -inkey $CLIENTKEYFILE -in $CLIENTCERTFILE -out $CLIENTPFX
+
+echo
+echo "   Changing mode and copying to home directory"
+echo
+chmod +r $CLIENTPFX
+cp *.pfx ../.
+
+
 #verify cert ???
 echo
 echo "   Verify Client-side cert"
