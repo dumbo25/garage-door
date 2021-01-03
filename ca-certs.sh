@@ -65,8 +65,8 @@ fi
 echo
 echo "Generate Certtificate Authority cert and key"
 echo "   prompts for PEM Pass Phrase"
-echo "$ openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE -subj \"/CN=$CANAME/emailAddress=$EMAIL/C=US/ST=$STATE/L=$CITY/$
-openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE -subj "/CN=$CANAME/emailAddress=$EMAIL/C=US/ST=$STATE/L=$CITY/O=$LASTNA$
+echo "$ openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE -subj \"/CN=$CANAME/emailAddress=$EMAIL/C=US/ST=$STATE/L=$CITY/O=$LASTNAME/OU=$FIRSTNAME\""
+openssl req -new -x509 -days $CADAYS -keyout $CAKEYFILE -out $CACERTFILE -subj "/CN=$CANAME/emailAddress=$EMAIL/C=US/ST=$STATE/L=$CITY/O=$LASTNAME/OU=$FIRSTNAME"
 
 echo
 echo "   values that may be needed for other guides"
