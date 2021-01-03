@@ -110,4 +110,4 @@ sudo openssl verify -CAfile $CACERTFILE $CLIENTCERTFILE
 
 echo
 echo
-echo "Exiting Client-side Cert Scri
+echo "Exiting Client-side Cert Script"
