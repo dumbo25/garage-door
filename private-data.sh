@@ -14,18 +14,15 @@ FIRSTNAME="<your-business-unit-or-firstname>"
 EMAIL="<your-throw-away-gmail-account>@gmail.com"
 CERTPASSWORD="<your-throw-away-gmail-password>"
 
-# The Common Name used for the CA (CAANAME) should not be the same as the one used for server or client certs (DNSNAME)
-# DNSNAME example: my-domain.duckdns.org
-DNSNAME="<your-DNS-name>" 
+# The Common Name used for the CA (CAANAME) should not be the same as the one used for server or client certs (COMMONNAME)
+# For example: serverName.duckdns.org
+COMMONNAME="<your-DNS-name>" 
 CANAME="cacert"
 
 # you can change these to whatever you would like
 MYCERTSDIR="/home/pi/certs"
 CACRT="ca-crt"
 CAKEY="ca-key"
-
-PEMPSWD="<your-pem-pass-phrase"
-CERTNAME="<your-project-name>"
 
 #
 #   Replace values above in angle brackets with your values
