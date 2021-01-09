@@ -112,7 +112,7 @@ if ($sensor == 1) {
         $results = $garageDB->query('select * from status where name = "vacation";');
         $res = $results->fetchArray(SQLITE3_ASSOC);
         $value = $res['value'];
- 	if ($cmd == 'vacation') {
+ 	if ($value == 'vacation') {
 		echo "					<li><a href='/index.php'> Toggle Vacation<xx class=\"value\">", $value, "</xx></a></li>\r";
 	} else {
 		echo "					<li><a href='/index.php?cmd=vacation'> Toggle Vacation<xx class=\"value\">", $value, "</xx></a></li>\r";
@@ -121,7 +121,7 @@ if ($sensor == 1) {
         $results = $garageDB->query('select * from status where name = "schedule";');
         $res = $results->fetchArray(SQLITE3_ASSOC);
         $value = $res['value'];
-  	if ($cmd == 'schedule') {
+  	if ($value == 'schedule') {
 		echo "					<li><a href='/index.php'> Toggle Schedule<xx class=\"value\">", $value, "</xx></a></li>\r";
 	} else {
 		echo "					<li><a href='/index.php?cmd=schedule'> Toggle Schedule<xx class=\"value\">", $value, "</xx></a></li>\r";
