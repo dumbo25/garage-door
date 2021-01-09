@@ -12,6 +12,9 @@
 		// an accidental page refresh causes the garage door to open
 		// the following two lines must be before any HTML to prevent accidental door openings
 		header('Location: /index.php');
+                // When accessing from, cellular I was getting a lot of flickering without getting anywhere
+                // ... data:text/html,
+                // Go to Settings, Saafari, and Clear History and Website Data
 		die();
 	}
 
