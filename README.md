@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/dumbo25/garage-door/blob/main/wall%20mount.png?raw=true)
 
-Code for a smart garage door opener. Features:
+This repository contains the code for a wall-mounted, smart garage door opener, as well as, older versions of the project. Features:
   * Open and close an overhead garage door 
   ** replace doorbell button with this device
   ** use a 3V remote for the opener - works with any garage door
