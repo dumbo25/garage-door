@@ -19,10 +19,9 @@ Code for a smart garage door opener. Features:
   * Command-line scripts to open, close and return the status of the garage door
 
 The project is described in more detail here:
-
-[Recommended Garage Door Opener](https://sites.google.com/site/cartwrightraspberrypiprojects/home/home-automation-categories/access-control/smart-overhead-door-opener-1)
-
-[12V Smart Remote Garage Door Opener](https://sites.google.com/site/cartwrightraspberrypiprojects/home/home-automation-categories/access-control/garage-door-opener?authuser=0)
+  * [Recommended Garage Door Opener](https://sites.google.com/site/cartwrightraspberrypiprojects/home/home-automation-categories/access-control/smart-overhead-door-opener-1)
+  * [12V Smart Remote Garage Door Opener](https://sites.google.com/site/cartwrightraspberrypiprojects/home/home-automation-categories/access-control/garage-door-opener?authuser=0)
+  * [Deprecated: My original instructable](https://www.instructables.com/Garage-Door-Opener-2/): hacks into doorbell wires
 
 
 
