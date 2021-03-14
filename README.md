@@ -1,6 +1,6 @@
 # garage-door
 
-![alt text](https://github.com/dumbo25/garage-door/blob/main/remote%20mounted.png?raw=true)
+![alt text](https://github.com/dumbo25/garage-door/blob/main/wall%20mount.png?raw=true)
 
 Code for a smart garage door opener. Features:
   * Open and close an overhead garage door using the doorbell and the garage door's standard remote 
