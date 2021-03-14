@@ -2,22 +2,23 @@
 
 ![alt text](https://github.com/dumbo25/garage-door/blob/main/wall%20mount.png?raw=true)
 
-This repository contains the code for a wall-mounted, smart garage door opener, as well as, older versions of the project. Features:
- * Open and close an overhead garage door 
-     * replace doorbell button with this device
-     * use a 3V remote for the opener - works with any garage door
- * Bullet list item 2
- * Camera with motion eye to monitor garage
- * Seco-larm to sense if the garage door is opened or closed
- * Control the garage door from:
+This repository contains the code for a wall-mounted, smart garage door opener, as well as, older versions of the project. 
+
+The wall mounted device replaces the garage doorbell button.
+
+The features of the recommended version includes:
+ * Open and close an overhead garage door using:
+     * Blue pushbutton, which replaces the doorbell button
      * SmartPhone (e.g., Android or iPhone) 
      * Amazon Echo
- * Monitor and record the state of the garage door 
+ * A 3V remote for the openeris electrically pressed. So, it works with RPi0 and any garage door opener
+ * Camera with motion eye to monitor garage
+ * Seco-larm to monitor and record if the garage door is opened or closed
  * Access monitoring data over the internet or through Echo
  * Keep the garage door secure (e.g., on power loss, the door should not open, no one else on the web can open the door)
  * Do not allow anyone else on the net to open the door (two way self-signed SSL certificate)
  * Set a schedule for when the garage door should be opened or closed (time of day, vacation, no one home)
- * Send a text message to open or more smart phones if the door is open when it should be closed
+ * Send a text message to one or more smart phones if the door is open when it should be closed
  * Command-line scripts to open, close and return the status of the garage door
 
 The project is described in more detail here:
