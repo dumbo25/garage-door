@@ -45,6 +45,8 @@ sleep(1)
 open = GPIO.input(SENSOR)
 GPIO.cleanup()
 if open == 0:
+    print ("Garage door is open")
     sys.exit(0)
 else:
+    print ("Garage door is closed")
     sys.exit(1)
